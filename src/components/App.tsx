@@ -11,13 +11,11 @@ const App = () => {
     <div className="flex min-h-screen flex-col bg-grey">
       <Header />
       <main className="flex w-screen flex-col items-center pt-10">
-        <section className="flex w-full max-w-screen-xl">
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/profile/:id" element={<ProfileScreen />} />
-            <Route path="/signin" element={<Signin />} />
-          </Routes>
-        </section>
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/profile/:id" element={<ProfileScreen />} />
+          <Route path="/signin" element={<Signin />} />
+        </Routes>
       </main>
       <footer>76561198156850117</footer>
     </div>

@@ -1,16 +1,25 @@
 import { useParams } from "react-router-dom";
 
+import Section from "components/Section";
 import ProfileInfo from "components/ProfileInfo";
+import UserStats from "components/UserStats";
 
-import { useGetProfileByIdQuery } from "redux/stats/profileApi";
-
-// import { IPlayerData } from "interfaces/IPlayerData";
+import {
+  useGetProfileByIdQuery,
+  useGetStatsByIdQuery,
+} from "redux/stats/profileApi";
 
 const ProfileScreen = () => {
   const { id } = useParams();
   const { data: profile } = useGetProfileByIdQuery(id ?? "", { skip: !id });
+  const { data: stats } = useGetStatsByIdQuery(id ?? "", { skip: !id });
 
-  return <div>{profile && <ProfileInfo {...profile} />}</div>;
+  return (
+    <Section>
+      {profile ? <ProfileInfo {...profile} /> : null}
+      {stats ? <UserStats stats={stats} /> : null}
+    </Section>
+  );
 };
 
 export default ProfileScreen;

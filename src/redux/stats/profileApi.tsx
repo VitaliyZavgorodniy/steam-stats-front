@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { IPlayerData } from "interfaces/IPlayerData";
+import { IPlayerStats } from "interfaces/IPlayerStats";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
@@ -9,7 +10,10 @@ export const profileApi = createApi({
     getProfileById: builder.query<IPlayerData, string>({
       query: (id) => `/steam-api/user/${id}`,
     }),
+    getStatsById: builder.query<IPlayerStats[], string>({
+      query: (id) => `/steam-api/stats/${id}`,
+    }),
   }),
 });
 
-export const { useGetProfileByIdQuery } = profileApi;
+export const { useGetProfileByIdQuery, useGetStatsByIdQuery } = profileApi;
